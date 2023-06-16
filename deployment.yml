@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: http-server
-          image: sandaalexandru/assignment1:1  # Use the name of the Docker image you built
+          image: sandaalexandru/nginxtest:latest  # Use the name of the Docker image you built
           ports:
-            - containerPort: 8080
+            - containerPort: 7080
