@@ -1,12 +1,14 @@
-FROM mcr.microsoft.com/powershell
-# Copy the PowerShell script to the container
-COPY httpServer.ps1 /app/httpServer.ps1
+#Pull the minimal Ubuntu image
+FROM ubuntu
 
-# Set the working directory
-WORKDIR /app
+# Install Nginx
+RUN apt-get -y update && apt-get -y install nginx
+RUN apt-get update && apt-get install -y curl
+# Copy the Nginx config
+COPY default /etc/nginx/sites-available/default
 
-# Expose port 8080
-EXPOSE 8080
+# Expose the port for access
+EXPOSE 80/tcp
 
-# Run the PowerShell script
-CMD ["pwsh", "-File", "httpServer.ps1"]
+# Run the Nginx server
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
