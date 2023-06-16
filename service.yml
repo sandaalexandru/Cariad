@@ -8,5 +8,5 @@ spec:
     app: http-server
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 7080
       nodePort: 30000  # Choose a nodePort value that is available in your cluster
